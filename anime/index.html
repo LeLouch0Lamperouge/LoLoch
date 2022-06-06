@@ -42,14 +42,14 @@
                     `
                         <div class="media-block" style="width: 227px; margin-left: 0px;">
                             <div class="content-box">
-                                <a href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="fullClick"></a>
+                                <button href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="fullClick" aria-label="${data[i].title}"><div style="display:none;">${data[i].title}</div></button>
                                 <a href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="image">
                                     <img alt="${data[i].title}" src="images/${data[i].img}" >
                                 </a>
                                 <span class="coloros quality" id="${data[i].states}" style=" font-size:20px;">${data[i].state}</span>
                                 <span class="rate ti-star">${data[i].evaluate}</span>
                                 <span class="category">${data[i].location}</span>
-                                <button href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="ti-slow-motion play-btn"><div style="display:none;">${data[i].title}</div></button>
+                                <button href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="ti-slow-motion play-btn" aria-label="${data[i].title}"><div style="display:none;">${data[i].title}</div></button>
                                 <div class="hvr">
                                     <div class="genres">
                                         <span>${data[i].type_1}</span>
@@ -67,7 +67,7 @@
                     `
                         <div class="box-5x1 col-6 media-block" id="anime">
                             <div class="content-box">
-                                <a href="post/anime.php?id=${data[i].anime_posts_unique_id}" title="${data[i].title}" class="fullClick"></a>
+                                <button href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="fullClick" aria-label="${data[i].title}"><div style="display:none;">${data[i].title}</div></button>
                                 <a href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="image">
                                     <img alt="${data[i].title}" src="images/${data[i].img}" >
                                 </a>
@@ -75,7 +75,7 @@
                                 <span class="rate ti-star">${data[i].evaluate}</span>
                                 <span class="category">${data[i].location}</span>
                                 <span class="episode-block"><span>الحلقة </span><span>${data[i].episode_number}</span></span>
-                                <button href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="ti-slow-motion play-btn"><div style="display:none;">${data[i].title}</div></button>
+                                <button href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="ti-slow-motion play-btn"  aria-label="${data[i].title}"><div style="display:none;">${data[i].title}</div></button>
                                 <div class="hvr">
                                     <div class="genres">
                                         <span>${data[i].type_1}</span>
@@ -129,6 +129,16 @@ button.ti-slow-motion.play-btn {
     background: transparent;
     border: none;
 }
+button.fullClick {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: none;
+}
     </style>
 </head>
 <body id="bodyMan">
@@ -144,9 +154,9 @@ button.ti-slow-motion.play-btn {
                         <button class="btn rounded" id="go" name="searchGo">بحث</button>
                 </div>
                 <div class="sociaLinks">
-                    <button href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></button>
-                    <button href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></button>
-                    <button href="https://www.tiktok.com/" target="_blank"><i class="fab fa-tiktok"></i></button>
+                    <button href="https://www.facebook.com/" target="_blank" aria-label="facebook"><i class="fab fa-facebook"></i></button>
+                    <button href="https://twitter.com/" target="_blank" aria-label="twitter"><i class="fab fa-twitter"></i></button>
+                    <button href="https://www.tiktok.com/" target="_blank" aria-label="tiktok"><i class="fab fa-tiktok"></i></button>
                 </div>
                 <div class="btns">
                     <button class="btn menu-btn ti-menu-round" name="main-menu" data-id="main-menu" aria-label="main menu"></button>
