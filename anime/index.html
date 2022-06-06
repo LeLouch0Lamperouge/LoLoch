@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Anime is a website where you can watch anime for free.">
+    <meta name="keywords" content="Anime, Loloch, Meliodas">
+    <meta name="author" content="LoLOch, loloch.lamperouge@gmail.com">
+    <meta name="og:title" content="Anime">
+    <meta name="og:description" content="Anime is a website where you can watch anime for free.">
+    
+    <meta property="og:image" content="#">
+    <link rel="icon" href="#" type="image/x-icon">
+
+    <meta name="og:type" content="website">
+    <meta name="og:email" content="loloch.lamperouge@gmail.com">
+    <meta name="og:country-name" content="Egypt">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#ed3c3c">
+    <meta name="msapplication-navbutton-color" content="#ed3c3c">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#ed3c3c">
+    <title>Anime</title>
+    <link rel="stylesheet" href="css/loloch-rtl.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://kit-pro.fontawesome.com/releases/v5.13.0/css/pro.min.css">
+    <script src="https://kit.fontawesome.com/268361e16f.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&amp;display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        
+            const api_url = "data/anime.json";
+            async function getData() {
+                const repos = await fetch(api_url);
+                const data = await repos.json();
+                for(let i=0; i<data.length; i++) {
+                    var sliderso = document.getElementById("sliderso");
+                    sliderso.innerHTML += 
+                    `
+                        <div class="media-block" style="width: 227px; margin-left: 0px;">
+                            <div class="content-box">
+                                <button href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="fullClick" aria-label="${data[i].title}"><div style="display:none;">${data[i].title}</div></button>
+                                <a href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="image">
+                                    <img alt="${data[i].title}" src="images/${data[i].img}" >
+                                </a>
+                                <span class="coloros quality" id="${data[i].states}" style=" font-size:20px;">${data[i].state}</span>
+                                <span class="rate ti-star">${data[i].evaluate}</span>
+                                <span class="category">${data[i].location}</span>
+                                <button href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="ti-slow-motion play-btn" aria-label="${data[i].title}"><div style="display:none;">${data[i].title}</div></button>
+                                <div class="hvr">
+                                    <div class="genres">
+                                        <span>${data[i].type_1}</span>
+                                        <span>${data[i].type_2}</span>
+                                        <span>${data[i].type_3}</span>
+                                    </div>
+                                    <a href="post/anime.php?id=${data[i].anime_posts_unique_id}"><h3>${data[i].title}</h3></a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    var myMenu = document.getElementById("myMenu");
+                    myMenu.innerHTML += 
+                    `
+                        <div class="box-5x1 col-6 media-block" id="anime">
+                            <div class="content-box">
+                                <button href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="fullClick" aria-label="${data[i].title}"><div style="display:none;">${data[i].title}</div></button>
+                                <a href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="image">
+                                    <img alt="${data[i].title}" src="images/${data[i].img}" >
+                                </a>
+                                <span class="coloros quality" id="${data[i].states}" style=" font-size:20px;">${data[i].state}</span>
+                                <span class="rate ti-star">${data[i].evaluate}</span>
+                                <span class="category">${data[i].location}</span>
+                                <span class="episode-block"><span>الحلقة </span><span>${data[i].episode_number}</span></span>
+                                <button href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="ti-slow-motion play-btn"  aria-label="${data[i].title}"><div style="display:none;">${data[i].title}</div></button>
+                                <div class="hvr">
+                                    <div class="genres">
+                                        <span>${data[i].type_1}</span>
+                                        <span>${data[i].type_2}</span>
+                                        <span>${data[i].type_3}</span>
+                                    </div>
+                                    <a href="post/anime.php?id=${data[i].anime_posts_unique_id}"><h3>${data[i].title}</h3></a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+
+        getData();
+
+
+    </script>
+    <style>
+        .content-box span {
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+}
+.sociaLinks button {
+    color: white;
+    border-radius: 50%;
+    padding: 0px 5px;
+    width: 32px;
+    text-align: center;
+    font-size: 17px;
+    float: right;
+    background: transparent;
+    border: none;
+}
+.sociaLinks button i {
+    display: block;
+    padding: 5px 0px;
+}
+.sociaLinks button:nth-child(1):hover {
+    background: #3b5999;
+}
+.sociaLinks button:nth-child(2):hover {
+    background: #55acee;
+}
+.sociaLinks button:nth-child(3):hover {
+    background: #8e44ad;
+} 
+button.ti-slow-motion.play-btn {
+    background: transparent;
+    border: none;
+}
+button.fullClick {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: none;
+}
+    </style>
+</head>
+<body id="bodyMan">
+
+    <div id="main">
+        <header class="tornado-header main-header itatchi">
+            <div class="container navbar">
+                <!--<a href="#" class="logo"><img src="#" alt="Anime"></a>-->
+                <div class="form-ui search" id="options">
+                    <div class="control-icon ti-search">
+                        <input type="text" placeholder="أبحث في هنا" class="rounded" id="searchBar">
+                    </div>
+                        <button class="btn rounded" id="go" name="searchGo">بحث</button>
+                </div>
+                <div class="sociaLinks">
+                    <button href="https://www.facebook.com/" target="_blank" aria-label="facebook"><i class="fab fa-facebook"></i></button>
+                    <button href="https://twitter.com/" target="_blank" aria-label="twitter"><i class="fab fa-twitter"></i></button>
+                    <button href="https://www.tiktok.com/" target="_blank" aria-label="tiktok"><i class="fab fa-tiktok"></i></button>
+                </div>
+                <div class="btns">
+                    <button class="btn menu-btn ti-menu-round" name="main-menu" data-id="main-menu" aria-label="main menu"></button>
+                </div>
+                <div class="navigation-menu" data-id="main-menu">
+                    <ul id="main_nav_header" class="main-nav-header">
+                        <a href="index.php" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-455838 current_page_item menu-item-455843 akainos"><i class="fa-solid fa-fire-flame-curved"></i>اخر التحديثات</li></a>
+                        <a href="serious.php" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fa-solid fa-list-ul"></i>لائحة الانمي</li></a>
+                        <a href="#" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fa-solid fa-calendar-days"></i>المواسم</li></a>
+                        <div class="borders"></div>
+                        <a href="#" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fa-solid fa-chart-line"></i>التقيم العالمي</li></a>
+                        <a href="#" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fa-solid fa-chart-line"></i>التقيم العربي</li></a>
+                        <div class="borders"></div>
+                        <a href="#" aria-current="page"><li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos" id="myWatchMenu" ><i class="fa-solid fa-chart-line"></i>قائمتي</li></a>
+                        <ul id="starous" class="sub-menu" id="sub_myWatchMenu" style="display:none;">
+                            <li><a href="nowwatch.php">اشاهدها حاليا</li></a>
+                            <li><a href="watchlate.php">اكملها لاحقا</li></a>
+                            <li><a href="wanttowatch.php">ارغب بمشاهدتها</li></a>
+                            <li><a href="watchdone.php">تم مشاهدتها</li></a>
+                            <li><a href="notwatch.php">لا ارغب بمشاهدتها</li></a>
+                        </ul>
+
+                        <a href="#" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fa-solid fa-chart-line"></i>القائمة المخصصة</li></a>
+                        <a href="#" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fa-solid fa-heart"></i>انميات المفضلة</li></a>
+                        <a href="#" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fa-solid fa-heart"></i>شخصياتي المفضلة</li></a>
+                        <a href="#" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fa-solid fa-clock"></i>اخر المشاهدات</li></a>
+                        <a href="#" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fad fa-download"></i>تحميلاتي</li></a>
+                        <div class="borders"></div>
+                        <a href="caracters.php" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fas fa-signal"></i>الشخصيات الاكثر شعبية</li></a>
+                        <a href="#" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fa-solid fa-puzzle-piece"></i>التوصيات</li></a>
+                        <a href="animeDate.php" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fa-solid fa-calendar-days"></i>موعد نزول الحلقات</li></a>
+                        <a href="#" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fa-solid fa-newspaper"></i>الاخبار</li></a>
+                        <div class="borders"></div>
+                        <a href="#" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fa-solid fa-gear"></i>الاعدادات</li></a>
+                        <a href="#" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fa-solid fa-flag"></i>مركز الشكاوي</li></a>
+                        <div class="borders"></div>
+                        <a href="about.php" aria-current="page"><li id="menu-item-455843" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455750 akainos"><i class="fa-solid fa-address-card"></i>حول الموقع</li></a>
+
+                    </ul>
+                </div>
+
+                
+            </div>
+
+        </header>
+
+        <div class="notifications">
+            <div class="notific"></div>
+        </div>
+            
+        <div class="home-slider rglide-tl glide-carousel glide-swipeable">
+            <div class="glide-track" data-glide-el="track">
+                <div class="glide-slides" id="sliderso" style="transition: transform 1000ms cubic-bezier(0.165, 0.84, 0.44, 1) 0s; width: 7264px; transform: translate3d(4767px, 0px, 0px);">
+                    
+                </div>
+            </div>
+            <div class="glide-arrows" data-glide-el="controls">
+                <button href="#" name="next-btn" class="ti-arrow-right-c next-btn" aria-label="next-btn" data-glide-dir=">" ></button>
+                <button href="#" name="prev-btn" class="ti-arrow-left-c prev-btn" aria-label="prev-btn" data-glide-dir="<"></button>
+            </div>
+        </div>
+
+    
+    <div class="addsArea"></div>
+
+    <div class="container page-content">
+        <div class="categories-tabs row">
+            <div class="category-block active col-6 col-s-4 col-m-3 col-l-2">
+                <div class="content-box fillter" data-get="latest">
+                    <a href="..."  aria-label="latest">
+                        <a href="..." class="icon"  aria-label="latest">
+                            <img style="width: 100%;max-width: 100%;max-height: 100%;height: 100%" src="img/Designbolts-Free-Multimedia-Film.webp" alt="الأحدث">
+                        </a>
+                        <span>الأحدث</span>
+                    </a>
+                </div>
+            </div>
+            <div class="category-block col-6 col-s-4 col-m-3 col-l-2">
+                <div class="content-box fillter" data-get="imdb">
+                    <a href=".."  aria-label="imdb">
+                        <a href=".." class="icon"  aria-label="imdb">
+                            <img style="width: 100%;max-width: 100%;max-height: 100%;height: 100%" src="img/imdb.webp" alt="الأعلى تقيماً">
+                        </a>
+                        <span>الأعلى تقيماً</span>
+                    </a>
+                </div>
+            </div>
+            <div class="category-block col-6 col-s-4 col-m-3 col-l-2">
+                <div class="content-box fillter" data-get="view">
+                    <a href=".."  aria-label="view">
+                        <a href=".." class="icon"  aria-label="view">
+                            <img style="width: 100%;max-width: 100%;max-height: 100%;height: 100%" src="img/sport_badges-02-512.webp" alt="الأكثر مشاهدة">
+                        </a>
+                        <span>الأكثر مشاهدة</span>
+                    </a>
+                </div>
+            </div>
+            <div class="category-block col-6 col-s-4 col-m-3 col-l-2">
+                <div class="content-box fillter" data-get="pin">
+                    <a href=".."  aria-label="pin">
+                        <a href=".." class="icon"  aria-label="pin">
+                            <img style="width: 100%;max-width: 100%;max-height: 100%;height: 100%" src="img/pin.webp" alt="المثبت">
+                        </a>
+                        <span>المثبت</span>
+                    </a>
+                </div>
+            </div>
+            <div class="category-block col-6 col-s-4 col-m-3 col-l-2">
+                <div class="content-box fillter" data-get="newFilms">
+                    <a href=".."  aria-label="newFilms">
+                        <a href=".." class="icon"  aria-label="newFilms">
+                            <img style="width: 100%;max-width: 100%;max-height: 100%;height: 100%" src="img/films.webp" alt="جديد الافلام">
+                        </a>
+                        <span>جديد الافلام</span>
+                    </a>
+                </div>
+            </div>
+            <div class="category-block col-6 col-s-4 col-m-3 col-l-2">
+                <div class="content-box fillter" data-get="newEpisode">
+                    <a href=".."  aria-label="newEpisode">
+                            <a href=".." class="icon"  aria-label="newEpisode">
+                            <img style="width: 100%;max-width: 100%;max-height: 100%;height: 100%" src="img/icon.webp" alt="جديد الحلقات">
+                        </a>
+                        <span>جديد الحلقات</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="holdposts">
+            <div class="row MediaGrid" id="myMenu">
+
+            </div>
+
+            <div class="paginate">
+                <ul class="page-numbers">
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">»</a></li>
+                </ul>
+            </div>
+            
+        </div>
+
+    </div>
+
+
+
+    <footer class="footers">
+        <div class="footerclass">
+            <p>جميع الحقوق محفوظة لـ LoLoch & <a href="https://www.linkedin.com/in/ahmed0saber/" target="_blank">Abo Saber</a> - تحميل ومشاهدة اون لاين © 2020</p>
+        </div>
+    </footer>
+</div>
+
+
+
+    <script src="js/tornado.min.js"></script>
+    <script src="js/slider.js"></script>
+
+</body>
+</html>
