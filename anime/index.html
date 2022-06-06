@@ -49,7 +49,7 @@
                                 <span class="coloros quality" id="${data[i].states}" style=" font-size:20px;">${data[i].state}</span>
                                 <span class="rate ti-star">${data[i].evaluate}</span>
                                 <span class="category">${data[i].location}</span>
-                                <a href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="ti-slow-motion play-btn"><div style="display:none;">Hello</div></a>
+                                <button href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="ti-slow-motion play-btn"><div style="display:none;">${data[i].title}</div></button>
                                 <div class="hvr">
                                     <div class="genres">
                                         <span>${data[i].type_1}</span>
@@ -75,7 +75,7 @@
                                 <span class="rate ti-star">${data[i].evaluate}</span>
                                 <span class="category">${data[i].location}</span>
                                 <span class="episode-block"><span>الحلقة </span><span>${data[i].episode_number}</span></span>
-                                <a href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="ti-slow-motion play-btn"><div style="display:none;">Hello</div></a>
+                                <button href="post/anime.php?id=${data[i].anime_posts_unique_id}" class="ti-slow-motion play-btn"><div style="display:none;">${data[i].title}</div></button>
                                 <div class="hvr">
                                     <div class="genres">
                                         <span>${data[i].type_1}</span>
@@ -101,6 +101,34 @@
     font-weight: 500;
     color: #fff;
 }
+.sociaLinks button {
+    color: white;
+    border-radius: 50%;
+    padding: 0px 5px;
+    width: 32px;
+    text-align: center;
+    font-size: 17px;
+    float: right;
+    background: transparent;
+    border: none;
+}
+.sociaLinks button i {
+    display: block;
+    padding: 5px 0px;
+}
+.sociaLinks button:nth-child(1):hover {
+    background: #3b5999;
+}
+.sociaLinks button:nth-child(2):hover {
+    background: #55acee;
+}
+.sociaLinks button:nth-child(3):hover {
+    background: #8e44ad;
+} 
+button.ti-slow-motion.play-btn {
+    background: transparent;
+    border: none;
+}
     </style>
 </head>
 <body id="bodyMan">
@@ -116,9 +144,9 @@
                         <button class="btn rounded" id="go" name="searchGo">بحث</button>
                 </div>
                 <div class="sociaLinks">
-                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.tiktok.com/" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <button href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></button>
+                    <button href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></button>
+                    <button href="https://www.tiktok.com/" target="_blank"><i class="fab fa-tiktok"></i></button>
                 </div>
                 <div class="btns">
                     <button class="btn menu-btn ti-menu-round" name="main-menu" data-id="main-menu" aria-label="main menu"></button>
